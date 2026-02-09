@@ -1,7 +1,7 @@
 function TaskCard({task, deleteTask, moveTask}){
 
   return(
-    <div style={{border:"1px solid gray", margin:"5px", padding:"5px"}}>
+    <div className="task-card">
       <p>{task.text}</p>
 
       <button onClick={()=>deleteTask(task.id)}>X</button>

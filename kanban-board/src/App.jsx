@@ -1,10 +1,10 @@
 import Board from "./components/Board";
-
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1 style={{textAlign:"center"}}>Kanban Task Board</h1>
+    <div className="app">
+      <h1>Kanban Task Board</h1>
       <Board />
     </div>
   );

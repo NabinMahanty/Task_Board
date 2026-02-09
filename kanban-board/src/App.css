@@ -1,42 +1,117 @@
-#root {
+.app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+h1 {
   text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.board {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.column {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 280px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #495057;
+  font-size: 1.2em;
+}
+
+.column-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.column-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.column-input button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.column-input button:hover {
+  background-color: #0056b3;
+}
+
+.task-card {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 12px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s;
+}
+
+.task-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.task-card p {
+  margin: 0 0 10px 0;
+  color: #212529;
+  word-wrap: break-word;
+}
+
+.task-card button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.task-card button:first-of-type {
+  background-color: #dc3545;
+  color: white;
+}
+
+.task-card button:first-of-type:hover {
+  background-color: #c82333;
+}
+
+.task-card button:not(:first-of-type) {
+  background-color: #6c757d;
+  color: white;
+}
+
+.task-card button:not(:first-of-type):hover {
+  background-color: #545b62;
+}
+
+@media (prefers-color-scheme: light) {
+  h1 {
+    color: #1a1a1a;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

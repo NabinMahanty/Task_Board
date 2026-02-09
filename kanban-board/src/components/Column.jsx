@@ -6,11 +6,11 @@ function Column({title, status, tasks, addTask, deleteTask, moveTask}){
   const [text, setText] = useState("");
 
   return(
-    <div style={{border:"1px solid black", padding:"10px", width:"250px"}}>
+    <div className="column">
       <h3>{title}</h3>
 
       {status === "todo" && (
-        <>
+        <div className="column-input">
           <input
             value={text}
             onChange={(e)=>setText(e.target.value)}
@@ -20,7 +20,7 @@ function Column({title, status, tasks, addTask, deleteTask, moveTask}){
             addTask(text);
             setText("");
           }}>Add</button>
-        </>
+        </div>
       )}
 
       {tasks

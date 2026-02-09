@@ -22,7 +22,7 @@ function Board(){
   }
 
   return(
-    <div style={{display:"flex", gap:"20px", justifyContent:"center"}}>
+    <div className="board">
       <Column title="To Do"
         status="todo"
         tasks={tasks}
