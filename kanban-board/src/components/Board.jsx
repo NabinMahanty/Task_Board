@@ -3,15 +3,11 @@ import Column from "./Column";
 
 function Board(){
 
-  const [tasks, setTasks] = useState([]);
-
-  // Load tasks from localStorage on mount
-  useEffect(() => {
+  // Initialize state directly from localStorage to avoid race condition
+  const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("kanbanTasks");
-    if (savedTasks) {
-      setTasks(JSON.parse(savedTasks));
-    }
-  }, []);
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
 
   // Save tasks to localStorage whenever they change
   useEffect(() => {

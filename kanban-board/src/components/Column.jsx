@@ -1,7 +1,7 @@
 import TaskCard from "./TaskCard";
 import { useState } from "react";
 
-function Column({title, status, tasks, addTask, deleteTask, moveTask}){
+function Column({title, status, tasks, addTask, deleteTask, moveTask, updateTask}){
 
   const [text, setText] = useState("");
   const [priority, setPriority] = useState("Medium");
