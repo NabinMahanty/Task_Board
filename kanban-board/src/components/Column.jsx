@@ -4,6 +4,7 @@ import { useState } from "react";
 function Column({title, status, tasks, addTask, deleteTask, moveTask}){
 
   const [text, setText] = useState("");
+  const [priority, setPriority] = useState("Medium");
 
   return(
     <div className="column">
@@ -16,9 +17,17 @@ function Column({title, status, tasks, addTask, deleteTask, moveTask}){
             onChange={(e)=>setText(e.target.value)}
             placeholder="Enter task"
           />
+          <select value={priority} onChange={(e)=>setPriority(e.target.value)} className="priority-select">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
           <button onClick={()=>{
-            addTask(text);
-            setText("");
+            if(text.trim()) {
+              addTask(text, priority);
+              setText("");
+              setPriority("Medium");
+            }
           }}>Add</button>
         </div>
       )}
@@ -31,6 +40,7 @@ function Column({title, status, tasks, addTask, deleteTask, moveTask}){
             task={t}
             deleteTask={deleteTask}
             moveTask={moveTask}
+            updateTask={updateTask}
           />
         ))
       }

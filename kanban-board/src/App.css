@@ -37,10 +37,12 @@ h1 {
   display: flex;
   gap: 8px;
   margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .column-input input {
   flex: 1;
+  min-width: 120px;
   padding: 8px;
   border: 1px solid #ced4da;
   border-radius: 4px;
@@ -62,8 +64,17 @@ h1 {
   background-color: #0056b3;
 }
 
+.priority-select {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
 .task-card {
-  border: 1px solid #dee2e6;
+  border: 3px solid #dee2e6;
   border-radius: 6px;
   margin-bottom: 10px;
   padding: 12px;
@@ -72,18 +83,75 @@ h1 {
   transition: box-shadow 0.2s;
 }
 
+.task-card.priority-High {
+  border-color: #dc3545;
+}
+
+.task-card.priority-Medium {
+  border-color: #ffc107;
+}
+
+.task-card.priority-Low {
+  border-color: #28a745;
+}
+
 .task-card:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
-.task-card p {
+.task-text {
   margin: 0 0 10px 0;
   color: #212529;
   word-wrap: break-word;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.task-text:hover {
+  background-color: #f0f0f0;
+}
+
+.task-edit {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.task-buttons {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.save-btn {
+  background-color: #28a745 !important;
+  color: white !important;
+}
+
+.save-btn:hover {
+  background-color: #218838 !important;
+}
+
+.cancel-btn {
+  background-color: #6c757d !important;
+  color: white !important;
+}
+
+.cancel-btn:hover {
+  background-color: #545b62 !important;
 }
 
 .task-card button {
-  margin-right: 5px;
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 4px;
@@ -92,21 +160,21 @@ h1 {
   transition: all 0.2s;
 }
 
-.task-card button:first-of-type {
+.task-buttons button:first-child {
   background-color: #dc3545;
   color: white;
 }
 
-.task-card button:first-of-type:hover {
+.task-buttons button:first-child:hover {
   background-color: #c82333;
 }
 
-.task-card button:not(:first-of-type) {
+.task-buttons button:not(:first-child) {
   background-color: #6c757d;
   color: white;
 }
 
-.task-card button:not(:first-of-type):hover {
+.task-buttons button:not(:first-child):hover {
   background-color: #545b62;
 }
 

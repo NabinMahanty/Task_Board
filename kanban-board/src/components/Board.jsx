@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Column from "./Column";
 
 function Board(){
 
   const [tasks, setTasks] = useState([]);
 
-  function addTask(text){
-    setTasks([...tasks, {id: Date.now(), text, status:"todo"}]);
+  // Load tasks from localStorage on mount
+  useEffect(() => {
+    const savedTasks = localStorage.getItem("kanbanTasks");
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
+  // Save tasks to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("kanbanTasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  function addTask(text, priority = "Medium"){
+    setTasks([...tasks, {id: Date.now(), text, status:"todo", priority}]);
   }
 
   function deleteTask(id){
@@ -21,6 +34,14 @@ function Board(){
     );
   }
 
+  function updateTask(id, newText){
+    setTasks(
+      tasks.map(t =>
+        t.id === id ? {...t, text:newText} : t
+      )
+    );
+  }
+
   return(
     <div className="board">
       <Column title="To Do"
@@ -29,6 +50,7 @@ function Board(){
         addTask={addTask}
         deleteTask={deleteTask}
         moveTask={moveTask}
+        updateTask={updateTask}
       />
 
       <Column title="In Progress"
@@ -36,6 +58,7 @@ function Board(){
         tasks={tasks}
         deleteTask={deleteTask}
         moveTask={moveTask}
+        updateTask={updateTask}
       />
 
       <Column title="Done"
@@ -43,6 +66,7 @@ function Board(){
         tasks={tasks}
         deleteTask={deleteTask}
         moveTask={moveTask}
+        updateTask={updateTask}
       />
     </div>
   );
